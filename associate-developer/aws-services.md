@@ -17,10 +17,13 @@ DNS
 
 CDN Edge locations that will cache assets
 
---- More Cloud Fronts than Availability Zones
+- More Cloud Fronts than Availability Zones
 
-Direct Connect - Direct connect datacenter to AWS without going over internet
-Used for moving lots of data and security
+### Direct Connect
+
+Directly connect datacenter to AWS without going over internet
+
+* Used for moving lots of data and security
 
 ### EC2
 
@@ -96,7 +99,9 @@ Data warehouse
 - Don’t run reports on production database - performance impact
 - Copy prod DB to redshift and run reporting, long jobs
 
-### Elasticache - Cache data in cloud
+### Elasticache
+
+Cache data in cloud
 
 - Example: Web store - serve top 10 products on your site that never change
 - Take a load off prod database
@@ -123,7 +128,7 @@ Migrate on-premise database to cloud
 - No down-time replication
 - Supports Oracle, Sql, Aurora, ASC, etc
 
-### Server Migration Service (SMS)
+### SMS - Server Migration Service
 
 Migrate VM Ware virtual machines to cloud
 
@@ -315,7 +320,7 @@ Collect/analyze mobile app usage
 
 Track user behavior patterns, create campaigns, engage users
 
-* Like Google Analytics
+- Like Google Analytics
 
 ## Business Productivity
 
@@ -327,4 +332,54 @@ Storing work docs in S3
 
 Exchange for AWS
 
-## Internet of Things - iOT
+## iOT - Internet of Things
+
+## Desktop & App Streaming
+
+### Workspaces
+
+VDI for AWS
+
+* run Windows environment in AWS
+
+### AppStream 2.0
+
+Stream desktop apps to users
+
+## Artificial Intelligence
+
+- Superintelligence by Nick Bostrom
+  - Paths, Dangers, Strategies
+  - Tweeted by Elon Musk
+
+### Alexa
+
+Voice service in the Cloud
+
+* Talking to Lambda
+* Lex - software core of Alexa. Allows you to embed Alexa in other devices.
+
+### Polly
+
+Text to Voice
+
+### Machine Learning
+
+### Rekognition
+
+* Upload picture and it will return tags
+* Facial recognition with percentage match
+
+#### Demo app idea
+
+Upload photos and retrieve tags for what's stored in them. Download them and add them back to the original image.
+
+## Messaging
+
+### SNS - Simple Notification Services
+
+### SQS - Simple Queuing Service
+
+Decouple applications using queues
+
+### SES - Simple Email Service
