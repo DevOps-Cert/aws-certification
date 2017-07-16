@@ -23,13 +23,42 @@ CDN Edge locations that will cache assets
 
 Directly connect datacenter to AWS without going over internet
 
-* Used for moving lots of data and security
+- Used for moving lots of data and security
 
-### EC2
+### EC2 - Elastic Compute Cloud
 
 Virtual machines in the cloud
 
 - Like VM Ware
+- Resizable, scale up and down to meet requirements
+- Boots in minutes
+
+#### Pricing
+
+- On Demand - hourly rate, no commitment
+- Reserved - 1-3 year terms, hourly rate discount
+  - Pay upfront
+  - Supplement with On Demand for high traffic times
+- Spot - bid whatever price you want
+  - great if your applications have flexible start/end time
+  - e.g. mapping genetic genome
+  - Interesting - You will not be charged for partial hour of usage if the platform terminates your usage. But will be charged if you terminate the instance.
+- Dedicated Host - dedicated, physical machine, still hourly rate without commitment
+  - For using software that has "dedicated host" licensing
+  - Regulatory, non multi-tenant
+
+#### Instance types
+
+- D for Density
+- R for RAM
+- M - main choice for general purpose apps
+- C for Compute
+- G - Graphics
+- I for IOPS
+- F for FPGA
+- T cheap general purpose (think T2 Micro)
+- P - Graphics (think Pics)
+- X - Extreme Memory
 
 ### EC2 Container Service
 
@@ -72,6 +101,33 @@ File based storage and you can share it between multiple virtual servers
 
 - Can install database/applications here
 - Storage Gateway - Virtual machine install on premise
+
+### EBS - Block Storage
+
+Storage to pair with EC2 instance
+
+- Cannot mount one EBS to multiple EC2
+- Backup within an availability zone
+
+#### Instance types
+
+- GP2 - General purpose SSD
+  - 3 IOPS per GB, 10k max, bursting
+- Provisioned IOPS SSD
+  - IO intensive apps
+  - use for >10k IOPS, 20k max
+- ST1 - Throughput Optimized HDD
+  - Magnetic
+  - Sequential data
+  - log processing, data warehousing
+  - can't be boot volumes
+- SC1 - Cold HDD
+  - cheapest for infrequently accessed workloads
+  - e.g. file server
+  - can't be booted
+- Magnetic (Standard)
+  - IS Bootable
+  - cheapest bootable storage device
 
 ## Databases
 
@@ -187,6 +243,18 @@ Business analytics tool
 - Every certification exam
 - User access control
 - Platform sign-in
+- Shared access to AWS account
+- Identity federation (AD, Facebook, Linkedin)
+- Multi-factor authentication
+- Temporary access for users/devices
+- 1 to 36 hour valid tokens
+
+#### terms
+
+- Users
+- Groups
+- Roles
+- Polices
 
 ### Inspector
 
@@ -207,6 +275,36 @@ Integrate Active Directory (Microsoft) with AWS
 ### Artifacts
 
 Download Compliance documentation in the AWS Console
+
+### STS - Security Token Service
+
+Grand temporary access
+
+- uses SAML - Security Assertion Markup Language
+- Does not need to be an existing user
+- Alternate to IAM - Allows user to sign on to AWS Console without IAM credentials
+- Cross AWS account access
+
+#### terms
+
+- federation
+- Identity broker - not out of the box, need to create your own
+- Identity store - AD, Facebook, Google, etc
+- Identities - end users
+
+#### Scenario - Enterprise web app on AWS is secured by corporate LDAP, uses S3.
+
+1. Develop an Identity Broker to authenticate with LDAP
+1. Identity Broken then communicates with STS (IAM GetFederationToken function)
+1. Application gets temporary access to resources (S3) - getting temporary access key, secret access key, token, and duration
+
+### Web Identity Federation
+
+#### terms
+
+- Trust Policy
+- ProviderId
+- RoleArn - Role Amazon Resource Name
 
 ## Management Tools
 
