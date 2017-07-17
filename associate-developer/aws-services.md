@@ -108,6 +108,12 @@ Storage to pair with EC2 instance
 
 - Cannot mount one EBS to multiple EC2
 - Backup within an availability zone
+- Changed on the fly except for Magnetic type
+  - Max 1 on-the-fly change per 6 hour period
+- Volume size can only be scaled up
+- Must be in the same availability zone
+  - No migration tool for EBS volumes
+  - Need to create a snapshot then create a volume in a different region
 
 #### Instance types
 
