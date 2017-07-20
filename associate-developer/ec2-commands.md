@@ -28,3 +28,14 @@ Unmount
 Check if volume is empty
 `file -s /dev/<volume>`
 if anything other than `data` in the output, then there is data on the volume...
+
+## AWS CLI
+
+Configure account
+`aws configure`
+
+Show all ec2 instance details in JSON formats
+`aws ec2 describe—instances`
+
+Delete instances
+`aws ec2 terminate-instances -instance-ids <IDs>`
