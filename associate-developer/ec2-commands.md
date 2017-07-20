@@ -24,3 +24,7 @@ lsblk // verify
 ```
 Unmount
 `unmount /dev/xvdb PATH_TO_MOUNT_DIR`
+
+Check if volume is empty
+`file -s /dev/<volume>`
+if anything other than `data` in the output, then there is data on the volume...
