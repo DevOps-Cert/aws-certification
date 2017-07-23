@@ -76,6 +76,26 @@ Server-less event-based app server
 - No access to OS (serverless)
 - Upload code and code will respond to events
 - Runs Alex skills
+- AWS Lambda is a compute service where you can upload your code and
+create a Lambda function. AWS Lambda takes care of provisioning and
+managing the servers that you use to run the code. You don’t have to worry about operating systems, patching, scaling, etc. You can use Lambda in the following ways.
+- As an event-driven compute service where AWS Lambda runs
+your code in response to events. These events could be changes
+to data in an Amazon S3 bucket or an Amazon DynamoDB table.
+- As a compute service to run your code in response to HTTP
+requests using Amazon API Gateway or API calls made using
+AWS SDKs. This is what we use at A Cloud Guru
+
+#### History of Cloud Computing
+
+Evolution of compute resource abstraction:
+1. Data Center
+1. IAAS
+1. PAAS
+1. Containers
+1. Serverless (e.g. Lambda)
+
+- Lambda functions respond to event triggers
 
 ### Lightsail
 
