@@ -34,4 +34,4 @@ Copy contents of S3 bucket to local storage
 
 `aws s3 cp --recursive s3://acloudguru-nv-mrobbins /home/ec2-user --region us-east-2`
 
-- note `--region` is required
+- note `--region` with your execution region is required if region requires Signature Version 4

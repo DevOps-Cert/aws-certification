@@ -72,3 +72,13 @@ security-groups
 ```
 Get IP address:
 `curl http://169.254.169.254/latest/meta-data/public-ipv4`
+
+## SDKs
+
+Available SDKs
+
+aws.amazon.com/tools
+
+- Some SDKs have default regions
+  - Java has a default, Node.js does not
+  - UE-EAST-1 is always the default if not specified
