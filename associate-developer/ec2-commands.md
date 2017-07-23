@@ -39,3 +39,36 @@ Show all ec2 instance details in JSON formats
 
 Delete instances
 `aws ec2 terminate-instances -instance-ids <IDs>`
+
+## EC2 Metadata
+
+Get metadata (not user data from current ec2 instance)
+
+`curl http://169.254.169.254/latest/meta-data/`
+
+Output:
+```
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+hostname
+iam/
+instance-action
+instance-id
+instance-type
+local-hostname
+local-ipv4
+mac
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+```
+Get IP address:
+`curl http://169.254.169.254/latest/meta-data/public-ipv4`
