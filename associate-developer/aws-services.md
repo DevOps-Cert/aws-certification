@@ -115,6 +115,74 @@ Out of the box cloud
 - Regulatory requirements to store files for years, retrieve latency in hours (3-4 hours)
 - Extremely low cost
 
+Features:
+- Encryption - multiple options
+- Tiered storage
+  - S3 (standard)
+    - Availability: 99.99%
+    - Concurrent facility fault tolerance: 2
+  - Reduced Redundancy Storage
+    - Concurrent facility fault tolerance: 1
+    - Durability: 99.99%
+    - E.g. store images in a standard bucket and thumbnails in a RRS bucket.
+  - S3 IA (infrequently accessed)
+    - Availability: 99.9%
+    - Concurrent facility fault tolerance: 2
+    - As reliable as standard S3
+    - Still allows for rapid retrieval
+    - Fee-based retrieval
+  - Glacier
+    - very cheap
+    - 3-5 hours for retrieval
+    - $0.01 / GB / month
+- Lifecycle Management
+- Versioning - multiple versions of a given file
+
+Pricing:
+- Storage (size)
+- Requests
+- Storage Management Pricing
+- Data transfer Pricing
+  - Inbound is Free
+  - Intra-AWS movement is chargeable
+- S3 Transfer Acceleration
+  - Using CloudFront and Edge locations
+  - About 35% faster when enabled for farthest distances around the word
+
+Availability:
+- Built for 99.99% availability for the S3 platform.
+- Amazon Guarantee 999% availability.
+- Amazon guarantees 99.999999999% durability for S3 information. (Remember 11 x 9’3).
+  - Called the "11:9" durability guarantee
+
+Files:
+- File size **0 bytes** to **5 TB**
+  - So empty files are allowed? Encode all your data as S3 filenames and pay nothing for storage!
+
+Buckets:
+- Universal namespace for buckets
+- DNS name created for each bucket
+  - Format: `https://s3-<region>.amazonaws.com/<bucket-name>`
+
+Data consistency:
+- Read after write for new objects
+- Eventual consistency for overridden or deleted objects
+  - Can take time to propagate
+
+Data parts:
+- key
+  - Designed to sort lexicographically
+  - Storing many files with similar names can lead to performance bottlenecks in S3 storage-- apparently?
+  - Add random salt to beginning of the filename for even distribution
+- value
+- version Id
+- Metadata
+- Sub-resources
+  - Access Control Lists
+  - Torrent
+
+
+
 ### EFS - Elastic File Service
 
 Amazon Elastic File System (Amazon EFS) is a file storage service for
