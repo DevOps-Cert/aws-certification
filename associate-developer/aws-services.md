@@ -181,6 +181,31 @@ Data parts:
   - Access Control Lists
   - Torrent
 
+#### Use S3 to host a static website
+
+A url is generated for you:
+`http://<bucket-name>.s3-website.<region>.amazonaws.com`
+`http://mrobbins.s3-website.us-east-2.amazonaws.com/index.html`
+
+- Provide and index.html and error.html and make the public.
+
+##### CORS - Cross Origin Resource Sharing
+
+- In the secondary resource bucket enables CORS and add an allow rule for the main bucket site.
+- Note there seems to be a delay after changing CORS rules before their reflected (minutes).
+
+#### Serverless Webpage with API Gateway and Lambda
+
+1. Create an S3 static site
+1. Create a Lambda function that is triggered by an API Gateway calls
+1. Lambda should return you some interesting data, like a string or image
+1. Lambda function must set the CORS headers for your site to access
+1. In your static site, make an call to your API Gateway that was created for you.
+
+#### Using Route 53 to give your site a domain name
+
+1. Enable Alias mode
+1. Select your S3 bucket with the same name. **The bucket name must be identical to the domain name**
 
 
 ### EFS - Elastic File Service
