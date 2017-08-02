@@ -60,6 +60,8 @@ Virtual machines in the cloud
 - P - Graphics (think Pics)
 - X - Extreme Memory
 
+![EC2 Instance Types](images/ec2-instance-types.png)
+
 ### EC2 Container Service
 
 - Like Docker
@@ -585,6 +587,8 @@ Voice service in the Cloud
 ### Polly
 
 Text to Voice
+
+![Polly use case architecture](images/polly-text-to-speech-architecture.png)
 
 ### Machine Learning
 
