@@ -18,6 +18,16 @@ DNS
 CDN Edge locations that will cache assets
 
 - More Cloud Fronts than Availability Zones
+- Origin: the source of all files a CDN will distribute
+- Distribution: the name given to a CDN which is a collection of all Edge locations
+- Edge locations allow write access
+- Cached until TTL
+- Can force cache clear (additional fee)
+
+#### Supported Distribution Types
+
+- Web for websites
+- RTMP for media streaming
 
 ### Direct Connect
 
@@ -209,6 +219,26 @@ A url is generated for you:
 1. Enable Alias mode
 1. Select your S3 bucket with the same name. **The bucket name must be identical to the domain name**
 
+#### Versioning
+
+- Deleting a version (via the console) is irreversible
+- With versioning enabled for an object, deleting the object IS reversible because a Delete Marker is set for that object. Deleting the delete marker will un-delete the object.
+- Effective billed volume is equal to the sum of all your version sizes
+- Delete Marker file is created
+- Once enabled, versioning CANNOT be disabled, only suspended.
+- Integrates with Lifecycle rules
+- Enable multi-factor verification for delete operations
+
+#### Cross-Region Replications
+
+- Disaster recovery strategy
+- Requires Versioning to be turned on for the source AND destination buckets
+- replicate whole bucket or objects with name prefix
+- Replication only applies to new objects in the bucket
+  - If you add a version to an existing object (created pre-replication) then ALL versions of that object will be replicated
+- multiple cross-region replication not supported. i.e. no daisy-chaining
+  - E.g. Replication setup: Bucket A -> B -> C. Add file to A, it will be replicated to B but not C.
+- Delete markers are replicated
 
 ### EFS - Elastic File Service
 
