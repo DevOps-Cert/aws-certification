@@ -29,6 +29,17 @@ CDN Edge locations that will cache assets
 - Web for websites
 - RTMP for media streaming
 
+#### Restrict Viewer Access
+
+- Use pre-signed (validated) URLs or cookies
+  - e.g how acloud.guru platform ensures you're not sharing video links
+- Geo Restrictions: whitelist/blacklist countries
+- Invalidation - create a rule to pull back sensitive objects before its natural expiration
+  - Rules are specified as file paths which may include wildcards, e.g. `/images/staff/*`
+  - 1,000 invalidation paths per month included free
+  - Max 3,000 invalidations in progress at once
+  - Alternatively use versioned objects or directory names, both are faster/cheaper
+
 ### Direct Connect
 
 Directly connect datacenter to AWS without going over internet
@@ -240,6 +251,29 @@ A url is generated for you:
   - E.g. Replication setup: Bucket A -> B -> C. Add file to A, it will be replicated to B but not C.
 - Delete markers are replicated
 
+#### Bucket Access Control
+
+- All new buckets are PRIVATE
+- Main control methods: Bucket Policies, Access Control Lists
+- Bucket request Logs
+
+#### Bucket Encryption
+
+- In Transit via SSL/TLS
+- Four methods of encryption at rest:
+  - Server Side Encryption (SSE):
+    1. SSE-S3: S3 managed (256 bit)
+    2. SSE-KMS: AWS Key Management Service, Managed Key, key envelope additional layer
+    3. SSE-C: Customer provided keys
+  - Client side encryption
+
+#### S3 Transfer Acceleration
+
+- Uses CloudFront Edge Network to speed up data Transfer
+- Optimized paths back to Amazon's network.
+- Upload directly to an edge location using a special URL
+- The farther your are from the Bucket region, the faster the upload
+
 ### EFS - Elastic File Service
 
 Amazon Elastic File System (Amazon EFS) is a file storage service for
@@ -250,8 +284,25 @@ is elastic, growing and shrinking automatically as you add and remove files,
 so your applications have the storage they need, when they need it.
 
 - Can install database/applications here
-- Storage Gateway - Virtual machine install on premise
+- Storage Gateway - Virtual machine install on-premises
 - File based storage and you can share it between multiple virtual servers
+
+### Storage Gateway
+
+- Service that connects an on-premises appliance with cloud-based storage for seamless/secure integration between heterogenous IT environments (i.e. hybrid cloud)
+- VM image installed on a host in your datacenter
+
+Four types:
+1. File Gateway (NFS)
+  - Flat file store
+  - An S3 bucket mounted as NFS mount point
+2. Volumes Gateway (iSCSI)
+  - Block-based storage (i.e. virtual harddisks suitable for OSes, applications)
+  - Stored Volumes - entire copy on-premises
+    - Async backup to S3 in form of Amazon Elastic Block Store (EBS) snapshots
+    - 1 GB - 16 TB in size
+  - Cache Volumes - only most recent version on-premises
+3. Tape Gateway (VTL)
 
 ### EBS - Block Storage
 
@@ -326,10 +377,22 @@ Cache data in cloud
 Import/export disks into Amazon
 
 - Briefcase storage appliance for loading terabytes of data
+- Only works with S3
 
-### Snowball Edge
+Snowball:
+- 80TB Briefcase
+- 256 AES encryption
+- Chain of custody
 
-Portable AWS datacenter
+Snowball Edge:
+- 100 TB on-board storage AND compute capability
+- mini AWS datacenter
+- Bring compute capacity where you otherwise couldn't, like collecting test data on an airplane
+- Run lambda functions
+
+SnowMobile
+- 45 ft shipping container on semi-truck
+- 100 PB of capacity
 
 ### DMS - Database Migration Services
 
