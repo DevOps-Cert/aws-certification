@@ -181,6 +181,7 @@ Availability:
 Files:
 - File size **0 bytes** to **5 TB**
   - So empty files are allowed? Encode all your data as S3 filenames and pay nothing for storage!
+- Files larger than 5GB requires multi-part upload
 
 Buckets:
 - Universal namespace for buckets
