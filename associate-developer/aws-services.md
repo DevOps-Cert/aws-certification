@@ -352,10 +352,30 @@ Supports:
 
 ### DynamoDB
 
-No SQL database
+NoSQL database
 
 - Highly scalable
+- Millisecond database
+- Supports Document and Key-Value model
+- SSD storage
+- 3 "geographically distinct data centers"
+- Write to one location, replicate to otherwise
+- Data can be modeled as standard, nested json, where each record has a unique property
+  - Supports up to 35 levels of nesting
 
+#### Data Consistency models
+
+- Eventual consistent reads (1 second, best read performance)
+- Guaranteed consistent reads
+
+#### Pricing
+
+- Provisioned throughput capacity
+- First 25 GB / month is free
+- $0.25 / GB / month thereafter
+- Read and Write "Capacity Units" - A unit can perform one operation per second.
+  - e.g. 10.3 writes/sec average = 11 Write Capacity Units
+  - Write Capacity Unit - $0.0065 for 10 units over an hour
 
 ### Redshift
 
@@ -366,10 +386,16 @@ Data warehouse
 
 ### Elasticache
 
-Cache data in cloud
+In-memory cache service
 
 - Example: Web store - serve top 10 products on your site that never change
 - Take a load off prod database
+- Faster performance than loading files from disk-based database
+
+#### Types
+
+- Memcached
+- Redis
 
 ## Migration Services
 
@@ -404,6 +430,7 @@ Migrate on-premise database to cloud
 - Stepping on Oracle toes for licensing fees
 - No down-time replication
 - Supports Oracle, Sql, Aurora, ASC, etc
+- Schema conversion tool (like Pentaho)
 
 ### SMS - Server Migration Service
 
