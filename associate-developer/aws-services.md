@@ -365,8 +365,15 @@ NoSQL database
 
 #### Data Consistency models
 
-- Eventual consistent reads (1 second, best read performance)
-- Guaranteed consistent reads
+##### Eventual Consistent Reads
+
+- Default
+- Usually 1 second across all regions (copies)
+- best read performance
+
+##### Guaranteed (Strongly) Consistent Reads
+
+- A strongly consistent read returns a result that reflects all writes that received a successful response prior to the read.
 
 #### Pricing
 
