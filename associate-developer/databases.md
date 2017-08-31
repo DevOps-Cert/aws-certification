@@ -21,9 +21,15 @@
 
 #### Primary Key
 
+- Primary key can be simple (partition key) or composite (partition key and sort key)
+
+#### Partition Key
+
 - Partition (formerly "hash") key
 - hash(pkey) --> physical partition location of data on disk
-- e.g. user Id, guid, etc.
+- e.g. user Id, device Id
+  - bad: status code (when there are few), create date
+- don't use an attribute for partition key where a value is magnitudes more popular than others
 
 #### Composite Keys
 
@@ -62,3 +68,24 @@
 - Is stream subscriptions supported?
 
 ![DynamoDB Streams Example](images/dynamodb-streams-example.png)
+
+### DynamoDB Queries
+
+Types:
+- Query
+- Scan
+
+#### Query
+
+- Eventual consistent read by default
+- Must provider partition key and exact value
+- Optionally, can provide sort key for additional filtering within partition
+
+#### Scan
+
+- Examines EVERY item in the table
+- Worse performance - can occupy all provisioned throughput
+
+- `ProjectionExpression` parameter - narrow the returned attributes
+- Results are sorted ascending by default
+  - Set `ScanIndexForward` to `false` for descending sort
