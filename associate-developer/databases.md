@@ -89,3 +89,33 @@ Types:
 - `ProjectionExpression` parameter - narrow the returned attributes
 - Results are sorted ascending by default
   - Set `ScanIndexForward` to `false` for descending sort
+
+### Provisioned throughput calculations
+
+- If you exceed your configured throughput, you will receive a HTTP 400 error response with a relevant error message
+
+#### Required Read units
+
+Constants:
+- A read unit can read up to 4KB at a time
+- For Eventually Consistent Reads (ECRs) units can read 2 / second
+- For Strongly Consistent Reads (SCRs) units can read 1 / second
+
+Assuming all items to read are the same size:
+```
+ceil(itemSize/4) = readsRequired
+readsRequired * itemCount = readsRequiredPerSecond
+readsRequiredPerSecond/1 = readUnitsRequiredForScrs
+readsRequiredPerSecond/2 = readUnitsRequiredForEcrs
+```
+
+#### Required Write units
+
+Constants:
+- A write unit can read up to 1KB at a time
+
+Assuming all items to read are the same size:
+```
+ceil(itemSize/1) = writesRequired
+writesRequired * itemCount = writesRequiredPerSecond = writeUnitsRequiredPerSecond
+```
