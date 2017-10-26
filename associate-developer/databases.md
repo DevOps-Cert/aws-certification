@@ -1,5 +1,3 @@
-# Databases
-
 ## Databases 101
 
 ### Use cases
@@ -119,3 +117,16 @@ Assuming all items to read are the same size:
 ceil(itemSize/1) = writesRequired
 writesRequired * itemCount = writesRequiredPerSecond = writeUnitsRequiredPerSecond
 ```
+
+### Miscellaneous
+
+#### Conditional writes
+
+- Apply a pre-condition to a write operation. Write will not occur if check fails.
+- E.g. check the value of a price field before discounting it.
+- Useful to protect against cases of multiple concurrent writes (mistakenly discounting twice!)
+- Called idempotent - denoting an element of a set that is unchanged in value when multiplied or otherwise operated on by itself
+
+#### Atomic Counters
+
+- Not idempotent - increments each time an operation in called, but run the risk of performing an operating multiple times
